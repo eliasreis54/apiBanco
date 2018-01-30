@@ -4,8 +4,10 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import com.eliasreis.banco.Utils.GeraNumeroConta;
+
 public class ContaCorrente {
-	public int documento;
+	public String documento;
 	public String nome;
 	public Date dataNascimento;
 	public int numero_conta;
@@ -16,11 +18,9 @@ public class ContaCorrente {
 	public double valor_atual;
 	public String senha;
 	
-	public ContaCorrente(int NumDoc, String NomeCorrentista, String DataNascito, double SalarioAtual, String SenhaDigitada ) throws ParseException {
+	public ContaCorrente(String NumDoc, String NomeCorrentista, double SalarioAtual, String SenhaDigitada ) throws ParseException {
 		documento = NumDoc;
 		nome = NomeCorrentista;
-		SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
-		dataNascimento = (Date) d.parse(DataNascito);
 		salario = SalarioAtual;
 		senha = SenhaDigitada;
 	}
@@ -32,10 +32,10 @@ public class ContaCorrente {
 		this.senha = senha;
 	}
 	
-	public int getDocumento() {
+	public String getDocumento() {
 		return documento;
 	}
-	public void setDocumento(int documento) {
+	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
 	public String getNome() {
@@ -53,8 +53,8 @@ public class ContaCorrente {
 	public int getNumero_conta() {
 		return numero_conta;
 	}
-	public void setNumero_conta(int numero_conta) {
-		this.numero_conta = numero_conta;
+	public void setNumero_conta() {
+		this.numero_conta = new GeraNumeroConta().Gerar();
 	}
 	public int getAgencia() {
 		return agencia;
